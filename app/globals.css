@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(0 0% 5%);
+  --color-foreground: hsl(0 0% 93%);
+  --color-card: hsl(240 6% 8%);
+  --color-card-foreground: hsl(0 0% 93%);
+  --color-popover: hsl(240 6% 8%);
+  --color-popover-foreground: hsl(0 0% 93%);
+  --color-primary: hsl(142 72% 50%);
+  --color-primary-foreground: hsl(0 0% 5%);
+  --color-secondary: hsl(240 4% 14%);
+  --color-secondary-foreground: hsl(0 0% 93%);
+  --color-muted: hsl(240 4% 14%);
+  --color-muted-foreground: hsl(240 5% 50%);
+  --color-accent: hsl(240 4% 14%);
+  --color-accent-foreground: hsl(0 0% 93%);
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-border: hsl(240 4% 16%);
+  --color-input: hsl(240 4% 16%);
+  --color-ring: hsl(142 72% 50%);
+  --color-chart-1: hsl(142 72% 50%);
+  --color-chart-2: hsl(48 96% 53%);
+  --color-chart-3: hsl(0 84% 60%);
+  --color-chart-4: hsl(200 80% 55%);
+  --color-chart-5: hsl(280 65% 60%);
+  --radius: 0.625rem;
+  --color-sidebar-background: hsl(240 6% 8%);
+  --color-sidebar-foreground: hsl(0 0% 93%);
+  --color-sidebar-primary: hsl(142 72% 50%);
+  --color-sidebar-primary-foreground: hsl(0 0% 5%);
+  --color-sidebar-accent: hsl(240 4% 14%);
+  --color-sidebar-accent-foreground: hsl(0 0% 93%);
+  --color-sidebar-border: hsl(240 4% 16%);
+  --color-sidebar-ring: hsl(142 72% 50%);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes gauge-fill {
+  from {
+    stroke-dashoffset: var(--gauge-circumference);
+  }
+  to {
+    stroke-dashoffset: var(--gauge-offset);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-gauge-fill {
+  animation: gauge-fill 1.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 2s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
